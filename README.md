@@ -70,10 +70,18 @@ torch 使用 PyTorch 官方 CPU wheel 源，避免下载 NVIDIA CUDA/cuDNN 依�
 
 ## 运行入门示例
 
+手写 PyTorch 版本：
+
 ```bash
 cd /home/guiyu/workspace/PINN
 source .venv/bin/activate
 python pinn_ode_intro_torch.py
+```
+
+DeepXDE 版本：
+
+```bash
+python pinn_intro_deepXDE.py
 ```
 
 更完整的运行检查流程见：
@@ -113,6 +121,7 @@ Max absolute error: 1.406372e-03
 ```text
 PINN_入门教程.ipynb          Jupyter Notebook 入门教程
 pinn_ode_intro_torch.py      PyTorch 手写 PINN ODE 示例
+pinn_intro_deepXDE.py        DeepXDE PINN ODE 示例
 PINN_DeepXDE_速查手册.md     机器学习、PINN、DeepXDE 速查文档
 TESTING.md                   运行与测试方法
 requirements.txt             pip 依赖文件

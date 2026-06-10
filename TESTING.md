@@ -6,6 +6,7 @@
 
 ```text
 pinn_ode_intro_torch.py
+pinn_intro_deepXDE.py
 ```
 
 它求解的一阶 ODE 是：
@@ -112,6 +113,8 @@ python -c "import deepxde as dde; print(dde.__version__)"
 
 ## 4. 运行 PINN 入门脚本
 
+### 4.1 手写 PyTorch 版本
+
 ```bash
 python pinn_ode_intro_torch.py
 ```
@@ -137,6 +140,30 @@ Figure saved to: /home/guiyu/workspace/PINN/outputs/pinn_ode_intro_result.png
 
 运行时间通常在十几秒到几十秒之间，取决于机器性能。
 
+### 4.2 DeepXDE 版本
+
+```bash
+python pinn_intro_deepXDE.py
+```
+
+运行时会看到类似输出：
+
+```text
+Using backend: pytorch
+Compiling model...
+Start training DeepXDE PINN...
+Step      Train loss              Test loss               Test metric
+...
+Training finished.
+
+Evaluation:
+Relative L2 error: ...
+Max absolute error: ...
+Figure saved to: /home/guiyu/workspace/PINN/outputs/pinn_intro_deepXDE_result.png
+```
+
+DeepXDE 版本和手写 PyTorch 版本求解同一个 ODE。区别是 DeepXDE 封装了采样、初始条件、训练循环和自动微分接口。
+
 ---
 
 ## 5. 判断是否跑通
@@ -147,13 +174,14 @@ Figure saved to: /home/guiyu/workspace/PINN/outputs/pinn_ode_intro_result.png
 1. 没有 Python 报错；
 2. 训练过程输出 Epoch 信息；
 3. 最后输出 Relative L2 error 和 Max absolute error；
-4. 生成 outputs/pinn_ode_intro_result.png。
+4. 生成对应的输出图片。
 ```
 
 检查输出图片：
 
 ```bash
 ls -lh outputs/pinn_ode_intro_result.png
+ls -lh outputs/pinn_intro_deepXDE_result.png
 ```
 
 期望看到文件存在，且大小不是 0。
@@ -178,7 +206,9 @@ cd /home/guiyu/workspace/PINN
 source .venv/bin/activate
 python -c "import torch; print(torch.__version__, torch.version.cuda, torch.cuda.is_available())"
 python pinn_ode_intro_torch.py
+python pinn_intro_deepXDE.py
 ls -lh outputs/pinn_ode_intro_result.png
+ls -lh outputs/pinn_intro_deepXDE_result.png
 ```
 
 ---
@@ -276,4 +306,3 @@ Relative L2 error < 1e-2
 4. residual 分布；
 5. 输出图片或数据文件。
 ```
-
