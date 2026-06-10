@@ -108,8 +108,7 @@ Max absolute error: 1.406372e-03
 PINN_入门教程.ipynb          Jupyter Notebook 入门教程
 pinn_ode_intro_torch.py      PyTorch 手写 PINN ODE 示例
 PINN_DeepXDE_速查手册.md     机器学习、PINN、DeepXDE 速查文档
-request.txt                  按用户命名保留的依赖文件
-requirements.txt             标准 pip 依赖文件
+requirements.txt             pip 依赖文件
 outputs/                     运行结果图像
 ```
 
@@ -125,4 +124,3 @@ outputs/                     运行结果图像
 5. Parker 太阳风方程
 6. MHD 表面输运模型
 ```
-
