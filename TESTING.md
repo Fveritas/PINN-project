@@ -7,6 +7,7 @@
 ```text
 pinn_ode_intro_torch.py
 pinn_intro_deepXDE.py
+pinn_parker_solar_wind_deepXDE.py
 ```
 
 它求解的一阶 ODE 是：
@@ -164,6 +165,32 @@ Figure saved to: /home/guiyu/workspace/PINN/outputs/pinn_intro_deepXDE_result.pn
 
 DeepXDE 版本和手写 PyTorch 版本求解同一个 ODE。区别是 DeepXDE 封装了采样、初始条件、训练循环和自动微分接口。
 
+### 4.3 Parker 太阳风 DeepXDE 快速验证
+
+```bash
+python pinn_parker_solar_wind_deepXDE.py
+```
+
+该脚本求解无量纲等温 Parker 太阳风方程：
+
+```text
+(y - 1/y) dy/dx = 2/x - 2/x^2
+x = r/r_c
+y = v/c_s
+```
+
+判断是否跑通：
+
+```text
+1. 脚本无报错；
+2. 输出 y(1)，且应接近 1；
+3. Minimum predicted y 大于 0；
+4. 输出 full domain 与 core domain 的 residual 指标；
+5. 生成 outputs/parker_solar_wind_deepXDE_result.png。
+```
+
+说明：这是快速验证脚本，只用于检查 DeepXDE 能否学习 Parker 方程的 transonic 分支，不代表科研级太阳风模型。
+
 ---
 
 ## 5. 判断是否跑通
@@ -207,8 +234,10 @@ source .venv/bin/activate
 python -c "import torch; print(torch.__version__, torch.version.cuda, torch.cuda.is_available())"
 python pinn_ode_intro_torch.py
 python pinn_intro_deepXDE.py
+python pinn_parker_solar_wind_deepXDE.py
 ls -lh outputs/pinn_ode_intro_result.png
 ls -lh outputs/pinn_intro_deepXDE_result.png
+ls -lh outputs/parker_solar_wind_deepXDE_result.png
 ```
 
 ---
